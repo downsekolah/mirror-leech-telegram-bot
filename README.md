@@ -203,6 +203,10 @@ python3 generate_drive_token.py
 
 ## Deploying on VPS
 
+# How to deploy in Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/downsekolah/MirrorX)
+
 **IMPORTANT NOTES**:
 1. You must set `SERVER_PORT` variable to `80` or any other port you want to use.
 2. To clear the container (this will not affect on the image):
