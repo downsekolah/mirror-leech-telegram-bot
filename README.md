@@ -224,6 +224,10 @@ sudo docker image prune -a
 
 ### Deploying on VPS Using Docker
 
+# How to deploy in Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/downsekolah/MirrorX)
+
 - Start Docker daemon (skip if already running), if installed by snap then use 2nd command:
 ```
 sudo dockerd
