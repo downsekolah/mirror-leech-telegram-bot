@@ -259,7 +259,7 @@ def main():
         try:
             for i in AUTHORIZED_CHATS:
                 if str(i).startswith('-'):
-                    bot.sendMessage(chat_id=i, text="<b>f"Bot menyala, Sejak : {'current = now.strftime('%Y/%m/%d %I:%M:%S')}!</b>", parse_mode=ParseMode.HTML)
+                    bot.sendMessage(chat_id=i, text="<b>f'Bot menyala, Sejak : {'current = now.strftime('%Y/%m/%d %I:%M:%S')'}!</b>", parse_mode=ParseMode.HTML)
         except Exception as e:
             LOGGER.error(e)
 
