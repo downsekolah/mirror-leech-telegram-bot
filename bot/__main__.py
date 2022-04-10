@@ -45,22 +45,22 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>Commit Date:</b> {last_commit}\n\n'\
-            f'<b>Bot Uptime:</b> {currentTime}\n'\
-            f'<b>OS Uptime:</b> {osUptime}\n\n'\
-            f'<b>Total Disk Space:</b> {total}\n'\
-            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
-            f'<b>Upload:</b> {sent}\n'\
+    stats = f'<b>Terakhir Commit:</b> {last_commit}\n\n'\
+            f'<b>Bot Menyala:</b> {currentTime}\n'\
+            f'<b>OS menyala:</b> {osUptime}\n\n'\
+            f'<b>Total Ruang Penyimpanan:</b> {total}\n'\
+            f'<b>Terpakai:</b> {used} | <b>Free:</b> {free}\n\n'\
+            f'<b>Unggah:</b> {sent}\n'\
             f'<b>Download:</b> {recv}\n\n'\
             f'<b>CPU:</b> {cpuUsage}%\n'\
             f'<b>RAM:</b> {mem_p}%\n'\
             f'<b>DISK:</b> {disk}%\n\n'\
-            f'<b>Physical Cores:</b> {p_core}\n'\
-            f'<b>Total Cores:</b> {t_core}\n\n'\
-            f'<b>SWAP:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
-            f'<b>Memory Total:</b> {mem_t}\n'\
-            f'<b>Memory Free:</b> {mem_a}\n'\
-            f'<b>Memory Used:</b> {mem_u}\n'
+            f'<b>Core yang terpakai:</b> {p_core}\n'\
+            f'<b>Jumlah Cores:</b> {t_core}\n\n'\
+            f'<b>SWAP zram:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
+            f'<b>Jumlah Memori:</b> {mem_t}\n'\
+            f'<b>Sisa Memori:</b> {mem_a}\n'\
+            f'<b>Memori yang digunakan:</b> {mem_u}\n'
     sendMessage(stats, context.bot, update.message)
 
 
@@ -79,7 +79,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         sendMarkup('Not Authorized user, deploy your own mirror-leech bot', context.bot, update.message, reply_markup)
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting...", context.bot, update.message)
+    restart_message = sendMessage("Bentar lagi restart", context.bot, update.message)
     if Interval:
         Interval[0].cancel()
     alive.kill()
@@ -108,11 +108,11 @@ def log(update, context):
 
 
 help_string_telegraph = f'''<br>
-<b>/{BotCommands.HelpCommand}</b>: To get this message
+<b>/{BotCommands.HelpCommand}</b>: Liat daftar command
 <br><br>
-<b>/{BotCommands.MirrorCommand}</b> [download_url][magnet_link]: Start mirroring to Google Drive. Send <b>/{BotCommands.MirrorCommand}</b> for more help
+<b>/{BotCommands.MirrorCommand}</b> [download_url][magnet_link]: Mulai Mirror file ke google drive. Ketik <b>/{BotCommands.MirrorCommand}</b> supaya lebih lanjut
 <br><br>
-<b>/{BotCommands.ZipMirrorCommand}</b> [download_url][magnet_link]: Start mirroring and upload the file/folder compressed with zip extension
+<b>/{BotCommands.ZipMirrorCommand}</b> [download_url][magnet_link]: Mulai mirror dengan file ekstensi zip
 <br><br>
 <b>/{BotCommands.UnzipMirrorCommand}</b> [download_url][magnet_link]: Start mirroring and upload the file/folder extracted from any archive extension
 <br><br>
