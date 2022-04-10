@@ -263,14 +263,6 @@ def main():
         except Exception as e:
             LOGGER.error(e)
 
-    now=datetime.now(pytz.timezone('Asia/Jakarta'))
-_IS_TELEGRAPH = True
-_IS_STICKER = True
-
-_DEFAULT = "https://t.me/c/1475139935/22255"
-_CHAT, _MSG_ID = None, None
-_LOGO_ID = None
-
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
     ping_handler = CommandHandler(BotCommands.PingCommand, ping,
