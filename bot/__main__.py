@@ -9,6 +9,7 @@ from sys import executable
 from telegram import ParseMode, InlineKeyboardMarkup
 from telegram.ext import CommandHandler
 import pytz
+import datetime
 from datetime import datetime
 
 from bot import bot, app, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, alive, web, AUTHORIZED_CHATS, LOGGER, Interval, rss_session
@@ -28,6 +29,7 @@ def stats(update, context):
     else:
         last_commit = 'No UPSTREAM_REPO'
     currentTime = get_readable_time(time() - botStartTime)
+    current = now.strftime('%Y/%m/%d %I:%M:%S')
     osUptime = get_readable_time(time() - boot_time())
     total, used, free, disk= disk_usage('/')
     total = get_readable_file_size(total)
@@ -257,9 +259,18 @@ def main():
         try:
             for i in AUTHORIZED_CHATS:
                 if str(i).startswith('-'):
-                    bot.sendMessage(chat_id=i, text="<b>Bot Menyala, Sejak : datetime.now(pytz.utc) !</b>", parse_mode=ParseMode.HTML)
+                    bot.sendMessage(chat_id=i, text="<b>Bot Menyala, Sejak : [current = now.strftime('%Y/%m/%d %I:%M:%S')]!</b>", parse_mode=ParseMode.HTML)
         except Exception as e:
             LOGGER.error(e)
+
+    now=datetime.now(pytz.timezone('Asia/Jakarta'))
+_IS_TELEGRAPH = True
+_IS_STICKER = True
+
+_DEFAULT = "https://t.me/c/1475139935/22255"
+_CHAT, _MSG_ID = None, None
+_LOGO_ID = None
+
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
     ping_handler = CommandHandler(BotCommands.PingCommand, ping,
@@ -282,6 +293,7 @@ def main():
     signal.signal(signal.SIGINT, exit_clean_up)
     if rss_session is not None:
         rss_session.start()
+
 
 app.start()
 main()
